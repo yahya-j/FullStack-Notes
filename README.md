@@ -21,5 +21,42 @@ Although Compose works in all environments, it's more focused on development and
 | :bell: NOTIFICATION |
 |:--------------------|
 | Using Compose on a production environment is not recommended at all. 
-| Instead, we use K8s for container's orchestration. |
+| Instead, use K8s for container's orchestration is better. |
+
+Before you execute the command :    docker-compose --file docker-compose.yaml up --detach
+Make sure you've opened your terminal in the same directory where the docker-compose.yaml file is. 
+This is very important for every docker-compose command you execute.
+
+### docker-compose.yaml file
+version: "3.8"
+
+services: 
+    db:
+        image: postgres:12
+        container_name: notes-db-dev
+        volumes: 
+            - db-data:/var/lib/postgresql/data
+        environment:
+            POSTGRES_DB: notesdb
+            POSTGRES_PASSWORD: secret
+    api:
+        build:
+            context: ./api
+            dockerfile: Dockerfile.dev
+        image: notes-api:dev
+        container_name: notes-api-dev
+        environment: 
+            DB_HOST: db ## same as the database service name
+            DB_DATABASE: notesdb
+            DB_PASSWORD: secret
+        volumes: 
+            - /home/node/app/node_modules
+            - ./api:/home/node/app
+        ports: 
+            - 3000:3000
+
+volumes:
+    db-data:
+        name: notes-db-dev-data
+
 
