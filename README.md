@@ -18,4 +18,8 @@ According to the Docker documentation - "Compose is a tool for defining and runn
 With Compose, you use a YAML file to configure your application’s services. Then, with a single command, you create and start 
 all the services from your configuration."
 Although Compose works in all environments, it's more focused on development and testing. 
-Using Compose on a production environment is not recommended at all.
+| :bell: NOTIFICATION |
+|:--------------------|
+| Using Compose on a production environment is not recommended at all. 
+| Instead, we use K8s for container's orchestration. |
+
