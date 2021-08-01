@@ -23,7 +23,9 @@ Although Compose works in all environments, it's more focused on development and
 | Using Compose on a production environment is not recommended at all. 
 | Instead, use K8s for container's orchestration is better. |
 
-Before you execute the command :    docker-compose --file docker-compose.yaml up --detach
+Before you execute the command :    
+- docker-compose --file docker-compose.yaml up --detach
+
 Make sure you've opened your terminal in the same directory where the docker-compose.yaml file is. 
 This is very important for every docker-compose command you execute.
 
